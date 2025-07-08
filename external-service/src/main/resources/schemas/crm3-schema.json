@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CRM 3 Schema",
+  "type": "object",
+  "required": ["id", "First_Name", "Last_Name", "Email", "Mailing_Street", "Mailing_City", "Mailing_State", "Mailing_Zip", "Mailing_Country"],
+  "properties": {
+    "id": { "type": "string" },
+    "First_Name": { "type": "string" },
+    "Last_Name": { "type": "string" },
+    "Email": { "type": "string", "format": "email" },
+    "Phone": { "type": "string" },
+    "Mailing_Street": { "type": "string" },
+    "Mailing_City": { "type": "string" },
+    "Mailing_State": { "type": "string" },
+    "Mailing_Zip": { "type": "string" },
+    "Mailing_Country": { "type": "string" }
+  },
+  "additionalProperties": false
+}

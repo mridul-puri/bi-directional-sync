@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CRM 2 Schema - Separated Address",
+  "type": "object",
+  "required": ["vid", "properties"],
+  "properties": {
+    "vid": { "type": "integer" },
+    "properties": {
+      "type": "object",
+      "required": ["firstname", "lastname", "email", "address_street", "address_city", "address_state", "address_postalcode", "address_country"],
+      "properties": {
+        "firstname": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
+        "lastname": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
+        "email": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string", "format": "email" } } },
+        "phone": { "type": "object", "properties": { "value": { "type": "string" } } },
+        "address_street": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
+        "address_city": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
+        "address_state": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
+        "address_postalcode": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
+        "address_country": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } }
+      }
+    }
+  },
+  "additionalProperties": false
+}

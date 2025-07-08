@@ -1,0 +1,12 @@
+{
+  "$.vid": "/id",
+  "$.properties/firstname/value": "/firstName",
+  "$.properties/lastname/value": "/lastName",
+  "$.properties/email/value": "/email",
+  "$.properties/phone/value": "/phone",
+  "$.properties/address_street/value": "/street",
+  "$.properties/address_city/value/": "/city",
+  "$.properties/address_state/value/": "/state",
+  "$.properties/address_postalcode/value": "/postalCode",
+  "$.properties/address_country/value": "/country"
+}

@@ -1,0 +1,12 @@
+{
+  "$.contactId": "/id",
+  "$.fName": "/firstName",
+  "$.lName": "/lastName",
+  "$.emailAddress": "/email",
+  "$.phoneNumber": "/phone",
+  "$.streetName": "/street",
+  "$.cityName": "/city",
+  "$.stateName": "/state",
+  "$.zipCode": "/postalCode",
+  "$.countryName": "/country"
+}
