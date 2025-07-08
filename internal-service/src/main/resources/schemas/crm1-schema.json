@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CRM 1 Schema",
+  "type": "object",
+  "required": ["AccountId", "FirstName", "LastName", "Email", "MailingAddress"],
+  "properties": {
+    "AccountId": { "type": "string" },
+    "FirstName": { "type": "string" },
+    "LastName": { "type": "string" },
+    "Email": { "type": "string", "format": "email" },
+    "Phone": { "type": "string" },
+    "MailingAddress": {
+      "type": "object",
+      "required": ["Street", "City", "State", "PostalCode", "Country"],
+      "properties": {
+        "Street": { "type": "string" },
+        "City": { "type": "string" },
+        "State": { "type": "string" },
+        "PostalCode": { "type": "string" },
+        "Country": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": false
+}
