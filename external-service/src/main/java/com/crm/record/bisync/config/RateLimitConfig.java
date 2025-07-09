@@ -13,7 +13,7 @@ import java.util.Map;
 public class RateLimitConfig {
 
     private Map<String, Integer> providerLimits = new HashMap<>();
-    private int defaultLimit = 1000;
+    private int defaultLimit = 5;
 
     public Map<String, Integer> getProviderLimits() {
         return providerLimits;
