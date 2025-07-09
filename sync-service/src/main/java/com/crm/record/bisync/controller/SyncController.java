@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/sync")
+@RequestMapping("/sync/v1")
 public class SyncController {
 
     private final SyncQueueService syncQueueService;

@@ -18,13 +18,17 @@ public class PersistenceHandler extends AbstractHandler {
     public void handle(ProcessingContext context) {
         switch(context.getOperationType()) {
             case CREATE:
+                Contact existingCreate = contactDao.findById(context.getContact().getId());
+                if(existingCreate != null) {
+                    throw new RuntimeException("Contact already exists with id: " + context.getContact().getId());
+                }
                 context.getContact().setLastUpdated(context.getRequestTime().toString());
                 contactDao.save(context.getContact());
                 context.setResponse("Contact created successfully");
                 break;
             case UPDATE:
-                Contact existingContact = contactDao.findById(context.getContact().getId());
-                if (existingContact == null) {
+                Contact existingUpdate = contactDao.findById(context.getContact().getId());
+                if (existingUpdate == null) {
                     throw new RuntimeException("Contact not found with id: " + context.getContact().getId());
                 }
                 context.getContact().setLastUpdated(context.getRequestTime().toString());

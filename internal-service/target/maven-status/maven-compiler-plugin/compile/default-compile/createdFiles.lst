@@ -3,6 +3,7 @@ com/crm/record/bisync/service/validation/SchemaValidator.class
 com/crm/record/bisync/client/SyncClient.class
 com/crm/record/bisync/model/ApiResponse.class
 com/crm/record/bisync/controller/ContactController.class
+com/crm/record/bisync/InternalServiceApplication.class
 com/crm/record/bisync/model/ProcessingContext.class
 com/crm/record/bisync/service/transformation/TransformationService.class
 com/crm/record/bisync/model/OperationType.class
@@ -16,7 +17,6 @@ com/crm/record/bisync/model/Contact.class
 com/crm/record/bisync/constants/Constants.class
 com/crm/record/bisync/service/ContactService$1.class
 com/crm/record/bisync/exception/SchemaValidationException.class
-com/crm/record/bisync/ExternalServiceApplication.class
 com/crm/record/bisync/service/validation/JSONSchemaValidatorService.class
 com/crm/record/bisync/service/handler/TransformationHandler.class
 com/crm/record/bisync/service/ContactService.class

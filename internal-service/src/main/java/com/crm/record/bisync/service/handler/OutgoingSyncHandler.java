@@ -24,7 +24,7 @@ public class OutgoingSyncHandler extends AbstractHandler {
         SyncMessage syncMessage = new SyncMessage();
         syncMessage.setProvider(context.getProvider());
         syncMessage.setSource(Constants.INTERNAL);
-        syncMessage.setOperation(Constants.CREATE);
+        syncMessage.setOperation(context.getOperationType().name());
 
         //Convert transformed object to String for generic synchronization
         try {

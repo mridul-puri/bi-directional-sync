@@ -12,12 +12,15 @@ import com.crm.record.bisync.model.SyncMessage;
 @Service
 public class SyncClient {
 
-    @Value("${sync.service.base.url}")
-    static String syncBaseUrl;
-
-    private final String SYNC_SERVICE_URL = syncBaseUrl + "/enqueue";
-
     private final RestTemplate restTemplate = new RestTemplate();
+
+    private String syncBaseUrl;
+    private String SYNC_SERVICE_URL;
+
+    public SyncClient(@Value("${sync.service.base.url}") String syncBaseUrl) {
+        this.syncBaseUrl = syncBaseUrl;
+        this.SYNC_SERVICE_URL = syncBaseUrl + "/enqueue";
+    }
 
     //Send Synchronization message to sync service
 

@@ -27,7 +27,7 @@ public class TransformationServiceImpl implements TransformationService {
         Map<String, String> mapping = mappingLoaderService.getMappingForProvider(flow);
         ObjectNode contactJsonNode = objectMapper.createObjectNode();
 
-        mapping.forEach((destinationPath, sourceJsonPath) -> {
+        mapping.forEach((sourceJsonPath, destinationPath) -> {
             try {
                 Object value = JsonPath.read(requestBody, sourceJsonPath);
                 if (value != null) {

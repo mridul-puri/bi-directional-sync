@@ -12,7 +12,7 @@ import com.crm.record.bisync.model.OperationType;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/contacts")
+@RequestMapping("/external/contacts/v1")
 public class ContactController {
 
     private final ContactService contactService;
@@ -26,7 +26,7 @@ public class ContactController {
 
     // Create API
     @PostMapping("{provider}/create")
-    public ResponseEntity<List<ContactResponse>> createContacts(@PathVariable String provider,
+    public ResponseEntity<List<ContactResponse>> createContacts(@PathVariable("provider") String provider,
                                                             @RequestBody List<String> requestBodies) {
         List<ContactResponse> responses = contactService.processContacts(provider, OperationType.CREATE, requestBodies, null, null, null, null);
         return ResponseEntity.ok(responses);
@@ -34,15 +34,15 @@ public class ContactController {
 
     // Read API
     @GetMapping("{provider}/{id}")
-    public ResponseEntity<ContactResponse> getContact(@PathVariable String provider,
-                                              @PathVariable String id) {
+    public ResponseEntity<ContactResponse> getContact(@PathVariable("provider") String provider,
+                                              @PathVariable("id") String id) {
         List<ContactResponse> responses = contactService.processContacts(provider, OperationType.GET, null, null, null, id, null);
         return ResponseEntity.ok(responses.get(0));
     }
 
     // Update API
     @PutMapping("{provider}/update")
-    public ResponseEntity<List<ContactResponse>> updateContacts(@PathVariable String provider,
+    public ResponseEntity<List<ContactResponse>> updateContacts(@PathVariable("provider") String provider,
                                                                 @RequestBody List<String> requestBodies) {
         List<ContactResponse> responses = contactService.processContacts(provider, OperationType.UPDATE, requestBodies, null, null, null, null);
         return ResponseEntity.ok(responses);
@@ -50,7 +50,7 @@ public class ContactController {
 
     // Delete API
     @DeleteMapping("{provider}/delete")
-    public ResponseEntity<List<ContactResponse>> deleteContacts(@PathVariable String provider,
+    public ResponseEntity<List<ContactResponse>> deleteContacts(@PathVariable("provider") String provider,
                                                                 @RequestBody List<String> ids) {
         List<ContactResponse> responses = contactService.processContacts(provider, OperationType.DELETE, null, null, null, null, ids);
         return ResponseEntity.ok(responses);
@@ -59,7 +59,7 @@ public class ContactController {
     //Sync API
     @PostMapping("/sync")
     public ResponseEntity<ContactResponse> syncContact(@RequestBody SyncMessage syncMessage) {
-        List<ContactResponse> responses = contactService.processContacts(null, OperationType.SYNC, null, null, syncMessage, null, null);
+        List<ContactResponse> responses = contactService.processContacts(syncMessage.getProvider(), OperationType.SYNC, null, null, syncMessage, null, null);
         return ResponseEntity.ok(responses.get(0));
     }
 }
