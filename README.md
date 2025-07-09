@@ -47,7 +47,7 @@ PROD SCALE SYSTEM DESIGN (CURRENT SCOPE) :
 
 PROPOSED SYSTEM DESIGNS (FUTURE SCOPE) :
 
-!Proposed_Design_Future_Scope](./design/Proposed_Design_Future_Scope.png)
+![Proposed_Design_Future_Scope](./design/Proposed_Design_Future_Scope.png)
 
 
 APPROACH AND DESIGN CHOICES :
@@ -68,36 +68,36 @@ APPROACH AND DESIGN CHOICES :
 - Conflict Resolution during Sync : I'am maintaining a 'LastUpdated' timestamp for every record (during every CUD or Sync operation). If during any operation, the new incoming timestamp is after the existing timestamp in the system, only then the operation to write to system (Last-write wins). Therefore, records are always kept at their latest status.
 - Used Chain of Responsibility Design Pattern in Java to proppogate the flow step by step (Easily scalable to add new service layer in the chain in future) :
     Create and Update APIs :
-        -  CRMs provide their CRM name (provider) and a list of records as input
-        -  Iterate over each record and perform below steps :
-        -  (Only for External Service) Rate Limiting based on configurable limit
-        -  Schema validation of input against respective JSON Schema of CRM Provider (Used Factory pattern for scalable design as CRM providers increase in future)
-        -  Data Transformation based on CRM Provider (Used Factory pattern for scalable design as CRM providers increase in future)
-        -  Store the record in DAO layer
-        -  (Only for Internal Service) Create a Sync Message (by tagging CRM Provider and Operation Type (Create/Update) against the record and
+        1.  CRMs provide their CRM name (provider) and a list of records as input
+        2.  Iterate over each record and perform below steps :
+        3.  (Only for External Service) Rate Limiting based on configurable limit
+        4.  Schema validation of input against respective JSON Schema of CRM Provider (Used Factory pattern for scalable design as CRM providers increase in future)
+        5.  Data Transformation based on CRM Provider (Used Factory pattern for scalable design as CRM providers increase in future)
+        5.  Store the record in DAO layer
+        6.  (Only for Internal Service) Create a Sync Message (by tagging CRM Provider and Operation Type (Create/Update) against the record and
            send it to Sync Service via API call.
      Read API (Get Record By Id) :
-        -  CRMs provide their CRM name (provider) and a record id to fetch details
-        -  (Only for External Service) Rate Limiting based on configurable limit
-        - Lookup the storage and get the details
-        - Transform the service DTO object into CRM specific contract
-        - Return the record
+        1.  CRMs provide their CRM name (provider) and a record id to fetch details
+        2.  (Only for External Service) Rate Limiting based on configurable limit
+        3. Lookup the storage and get the details
+        4. Transform the service DTO object into CRM specific contract
+        5. Return the record
       Delete API :
-        - CRMs provide their CRM name (provider) and list of record Ids to delete
-        - (Only for External Service) Rate Limiting based on configurable limit
-        - Delete the record from storage map
-        - (Only for Internal Service) Create a Sync Message (by tagging CRM Provider and Operation Type (Delete) against the record and
+        1. CRMs provide their CRM name (provider) and list of record Ids to delete
+        2. (Only for External Service) Rate Limiting based on configurable limit
+        3. Delete the record from storage map
+        4. (Only for Internal Service) Create a Sync Message (by tagging CRM Provider and Operation Type (Delete) against the record and
            send it to Sync Service via API call.
       Sync Service -> Sync API :
-        - Adds the sync message to Blocking Queue.
-        - Run rules as per rules config file and allow sync if they pass.
-        - Transform record from Service A format to Service B format 
+        1. Adds the sync message to Blocking Queue.
+        2. Run rules as per rules config file and allow sync if they pass.
+        3. Transform record from Service A format to Service B format 
           (In Sync Message, we can plug in source and destination -> accordingly mapping templates will load - focussed on generic behaviour)
-        - Create API call according to destination in sync message (Eg. External) and send the message.
-        - If Rate Limit blocks the call, put the message back in queue and retry after a configurable interval of time.
+        4. Create API call according to destination in sync message (Eg. External) and send the message.
+        5. If Rate Limit blocks the call, put the message back in queue and retry after a configurable interval of time.
       Extrenal System -> Sync API :
-        - Rate Limiting based on configurable limit
-        - In Sync Message, source System can plugin the operation (Create, Update, Delete). This is used at destination to update the DAO layer.
+        1. Rate Limiting based on configurable limit
+        2. In Sync Message, source System can plugin the operation (Create, Update, Delete). This is used at destination to update the DAO layer.
            Records are updated after comparing incoming timestmp with lastUpdatedTimestamp in the DB. If it's a newer entry, only then it's allowed to be written.
            (Last write wins approach for Conflict Resolution). 
 
