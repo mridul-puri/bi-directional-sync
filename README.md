@@ -130,6 +130,7 @@ RUN & TEST INSTRUCTIONS :
 Prerequisites
   - Java (17 or higher) : installed on the system
   - Maven : installed on the system
+
 Run 
   - Clone the repository and open root folder (i.e. /bi-directional-sync)
   - Execute command ./run-app.sh
