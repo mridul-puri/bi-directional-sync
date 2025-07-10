@@ -111,7 +111,7 @@ Prerequisites
 Run 
   - In the root folder, execute run-app.sh file.
   - It will bring up all 3 services on Localhost at different ports (Internal : 8081, External : 8082, Sync : 8083)
-  - Refer Postman Collection 'Bi-Directional Sync Service.postman_collection.json' at the root folder to test the APIs.
+  - Refer Postman Collection 'Bi-Directional-Sync-Service.postman_collection.json' at the root folder to test the APIs.
   - Flows that can be tested : 
     - CRUD operations on Internal System
     - CRUD operations on External System
