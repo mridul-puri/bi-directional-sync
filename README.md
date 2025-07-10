@@ -110,7 +110,7 @@ Prerequisites
   - Maven : installed on the system
 Run 
   - Clone the repository and open root folder (i.e. /bi-directional-sync)
-  - Execute command : ./run-app.sh
+  - Execute command ./run-app.sh
   - It will bring up all 3 services on Localhost at different ports (Internal : 8081, External : 8082, Sync : 8083)
   - Refer Postman Collection 'Bi-Directional-Sync-Service.postman_collection.json' at the root folder to test the APIs.
   - Flows that can be tested : 
