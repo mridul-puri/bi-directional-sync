@@ -52,10 +52,9 @@ PROPOSED SYSTEM DESIGNS (FUTURE SCOPE) :
 
 APPROACH AND DESIGN CHOICES :
 - Built 3 separate services (Internal, External and Sync Service) to be run on localhost at different ports
-- Different CRMs can provide data in different formats. I've considered taking input as JSON objects (wrapped under String) and perform JSON Schema validation.
+- Different CRMs can provide data in different formats. I've considered taking input as JSON objects and perform JSON Schema validation.
   In real world applications, we form contracts between systems in order to send/recieve data.
   So I've created JSON Schemas of different formats (loaded in memory during bootup) which are nothing but contracts with different CRM providers.
-- Input and output of all services has been kept as String, keeping in mind that (in real world) various systems are usually built on different Tech Stacks - so having a common DataType that all can support comes in handy.
 - For Data Transformation, I have created template files (path to path mapping - loaded in memory during bootup) to translate different CRM inputs to
   Internal / External Service DTOs.
 - For storage, I've created in memory Concurrent Hash Maps (record Id -> record object) in both Internal and External services. The record object DTO is different for both.
