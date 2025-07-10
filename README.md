@@ -95,9 +95,31 @@ APPROACH AND DESIGN CHOICES :
     - Extrenal System -> Sync API :
       - Rate Limiting based on configurable limit
       - In Sync Message, source System can plugin the operation (Create, Update, Delete). This is used at destination to update the DAO layer. Records are updated after comparing incoming timestmp with
-        lastUpdatedTimestamp in the DB. If it's a newer entry, only then it's allowed to be written. (Last write wins approach for Conflict Resolution). 
+        lastUpdatedTimestamp in the DB. If it's a newer entry, only then it's allowed to be written. (Last write wins approach for Conflict Resolution).
 
-TECH STACK :
+- Design Trade-Offs for choosing Message Queue at Prod scale : 
+  - RabbitMQ : 
+    - Pros
+      - Push based (better suitable since Sync to External system can happen via API call only)
+      - Message level Acknowledgement support (built-in)
+      - Reliable delivery
+    - Cons
+      - No built-in automatic retry (required to handle API Rate Limiting on External System)
+  - Kafka : 
+    - Pros
+      - Built-in Retry Logic (Good for handling Rate Limiting)
+      - High throughput
+      - High retention period (Good for reliable message delivery)
+    - Cons
+      - Pull based (Consumer needs to pull messages from Kafka topic - not good for External System API POV)
+  - My Suggestion :- 
+    - We need a mix of both, with these fetures :
+      - Push based queue
+      - Built-in retry logic
+      - High durability and reliable delivery with acknowledgements
+      - Configurable retention period
+
+TECH STACK USED :
 - Java
 - Spring Boot
 - Maven
