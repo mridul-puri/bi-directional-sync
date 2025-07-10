@@ -52,9 +52,10 @@ PROPOSED SYSTEM DESIGNS (FUTURE SCOPE) :
 
 APPROACH AND DESIGN CHOICES :
 - Built 3 separate services (Internal, External and Sync Service) to be run on localhost at different ports
-- Different CRMs can provide data in different formats. I've considered taking input as JSON objects and perform JSON Schema validation.
+- Different CRMs can provide data in different formats. I've considered taking input as JSON objects (wrapped under String) and perform JSON Schema validation.
   In real world applications, we form contracts between systems in order to send/recieve data.
   So I've created JSON Schemas of different formats (loaded in memory during bootup) which are nothing but contracts with different CRM providers.
+- Input and output of all services has been kept as String, keeping in mind that (in real world) various systems are usually built on different Tech Stacks - so having a common DataType that all can support comes in handy.
 - For Data Transformation, I have created template files (path to path mapping - loaded in memory during bootup) to translate different CRM inputs to
   Internal / External Service DTOs.
 - For storage, I've created in memory Concurrent Hash Maps (record Id -> record object) in both Internal and External services. The record object DTO is different for both.
@@ -66,7 +67,7 @@ APPROACH AND DESIGN CHOICES :
   with CRM providers, so a rule may/may not neccessarily be applicable to all CRM providers. Also, Rules config can have a map of any kind of rules as defined in respective
   rule class (focussed on making it generic). (Check out sync-rules-config.json)
 - Conflict Resolution during Sync : I'am maintaining a 'LastUpdated' timestamp for every record (during every CUD or Sync operation). If during any operation, the new incoming timestamp is after the existing timestamp in the system, only then the operation to write to system (Last-write wins). Therefore, records are always kept at their latest status.
-- Used Chain of Responsibility Design Pattern in Java to proppogate the flow step by step (Easily scalable to add new service layer in the chain in future) :
+- Used CHAIN OF RESPONSIBILITY Design Pattern in Java to propogate the flow step by step (Easily scalable to add new service layer in the chain in future) :
     - Create and Update APIs :
       - CRMs provide their CRM name (provider) and a list of records as input
       - Iterate over each record and perform below steps :
@@ -96,6 +97,7 @@ APPROACH AND DESIGN CHOICES :
       - Rate Limiting based on configurable limit
       - In Sync Message, source System can plugin the operation (Create, Update, Delete). This is used at destination to update the DAO layer. Records are updated after comparing incoming timestmp with
         lastUpdatedTimestamp in the DB. If it's a newer entry, only then it's allowed to be written. (Last write wins approach for Conflict Resolution).
+- NOTE : If in future, a CRM needs to send data in any other format (Eg. XML, CSV, Excel etc.), we can simply add a PARSER layer in the chain of responsibility, invoking the respective Parser class first (Factory pattern for various Parser classes) to translate the input into a JSON object and then directly validate against the JSON schema (Validation can be kept intact).
 
 - Design Trade-Offs for choosing Message Queue at Prod scale : 
   - RabbitMQ : 
