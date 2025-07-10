@@ -1,0 +1,297 @@
+{
+	"info": {
+		"_postman_id": "d45eace0-91ee-4055-9949-690347ca7109",
+		"name": "Bi-Directional Sync Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8270381"
+	},
+	"item": [
+		{
+			"name": "Internal Service",
+			"item": [
+				{
+					"name": "Create Record",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  \"{\\\"AccountId\\\": \\\"123\\\", \\\"FirstName\\\": \\\"Mridul\\\", \\\"LastName\\\": \\\"Puri\\\", \\\"Email\\\": \\\"mridul.puri@email.com\\\", \\\"Phone\\\": \\\"12345678\\\", \\\"MailingAddress\\\": {\\\"Street\\\": \\\"123 St\\\", \\\"City\\\": \\\"Bangalore\\\", \\\"State\\\": \\\"KA\\\", \\\"PostalCode\\\": \\\"28763\\\", \\\"Country\\\": \\\"India\\\"}}\",\n  \"{\\\"AccountId\\\": \\\"456\\\", \\\"FirstName\\\": \\\"M\\\", \\\"LastName\\\": \\\"P\\\", \\\"Email\\\": \\\"mridul.puri@email.com\\\", \\\"Phone\\\": \\\"12345678\\\", \\\"MailingAddress\\\": {\\\"Street\\\": \\\"123 St\\\", \\\"City\\\": \\\"Bangalore\\\", \\\"State\\\": \\\"KA\\\", \\\"PostalCode\\\": \\\"28763\\\", \\\"Country\\\": \\\"India\\\"}}\"\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/internal/contacts/v1/CRM1/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"internal",
+								"contacts",
+								"v1",
+								"CRM1",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Record",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/internal/contacts/v1/CRM1/12366",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"internal",
+								"contacts",
+								"v1",
+								"CRM1",
+								"12366"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Record",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  \"{\\\"AccountId\\\": \\\"12366\\\", \\\"FirstName\\\": \\\"Bob\\\", \\\"LastName\\\": \\\"Puri\\\", \\\"Email\\\": \\\"mridul.puri@email.com\\\", \\\"Phone\\\": \\\"12345678\\\", \\\"MailingAddress\\\": {\\\"Street\\\": \\\"123 St\\\", \\\"City\\\": \\\"Bangalore\\\", \\\"State\\\": \\\"KA\\\", \\\"PostalCode\\\": \\\"28763\\\", \\\"Country\\\": \\\"India\\\"}}\",\n  \"{\\\"AccountId\\\": \\\"4543\\\", \\\"FirstName\\\": \\\"RR\\\", \\\"LastName\\\": \\\"FF\\\", \\\"Email\\\": \\\"mridul.puri@email.com\\\", \\\"Phone\\\": \\\"12345678\\\", \\\"MailingAddress\\\": {\\\"Street\\\": \\\"123 St\\\", \\\"City\\\": \\\"Bangalore\\\", \\\"State\\\": \\\"KA\\\", \\\"PostalCode\\\": \\\"28763\\\", \\\"Country\\\": \\\"India\\\"}}\"\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/internal/contacts/v1/CRM1/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"internal",
+								"contacts",
+								"v1",
+								"CRM1",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Record",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  \"12366\",\n  \"326743\",\n  \"376\"\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/internal/contacts/v1/CRM1/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"internal",
+								"contacts",
+								"v1",
+								"CRM1",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "External Service",
+			"item": [
+				{
+					"name": "Create Record",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  \"{\\\"AccountId\\\": \\\"123\\\", \\\"FirstName\\\": \\\"Mridul\\\", \\\"LastName\\\": \\\"Puri\\\", \\\"Email\\\": \\\"mridul.puri@email.com\\\", \\\"Phone\\\": \\\"12345678\\\", \\\"MailingAddress\\\": {\\\"Street\\\": \\\"123 St\\\", \\\"City\\\": \\\"Bangalore\\\", \\\"State\\\": \\\"KA\\\", \\\"PostalCode\\\": \\\"28763\\\", \\\"Country\\\": \\\"India\\\"}}\",\n  \"{\\\"AccountId\\\": \\\"456\\\", \\\"FirstName\\\": \\\"M\\\", \\\"LastName\\\": \\\"P\\\", \\\"Email\\\": \\\"mridul.puri@email.com\\\", \\\"Phone\\\": \\\"12345678\\\", \\\"MailingAddress\\\": {\\\"Street\\\": \\\"123 St\\\", \\\"City\\\": \\\"Bangalore\\\", \\\"State\\\": \\\"KA\\\", \\\"PostalCode\\\": \\\"28763\\\", \\\"Country\\\": \\\"India\\\"}}\"\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/external/contacts/v1/CRM1/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"external",
+								"contacts",
+								"v1",
+								"CRM1",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Record",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/external/contacts/v1/CRM1/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"external",
+								"contacts",
+								"v1",
+								"CRM1",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Record",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  \"{\\\"AccountId\\\": \\\"12366\\\", \\\"FirstName\\\": \\\"Bob\\\", \\\"LastName\\\": \\\"Puri\\\", \\\"Email\\\": \\\"mridul.puri@email.com\\\", \\\"Phone\\\": \\\"12345678\\\", \\\"MailingAddress\\\": {\\\"Street\\\": \\\"123 St\\\", \\\"City\\\": \\\"Bangalore\\\", \\\"State\\\": \\\"KA\\\", \\\"PostalCode\\\": \\\"28763\\\", \\\"Country\\\": \\\"India\\\"}}\",\n  \"{\\\"AccountId\\\": \\\"4543\\\", \\\"FirstName\\\": \\\"RR\\\", \\\"LastName\\\": \\\"FF\\\", \\\"Email\\\": \\\"mridul.puri@email.com\\\", \\\"Phone\\\": \\\"12345678\\\", \\\"MailingAddress\\\": {\\\"Street\\\": \\\"123 St\\\", \\\"City\\\": \\\"Bangalore\\\", \\\"State\\\": \\\"KA\\\", \\\"PostalCode\\\": \\\"28763\\\", \\\"Country\\\": \\\"India\\\"}}\"\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/external/contacts/v1/CRM1/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"external",
+								"contacts",
+								"v1",
+								"CRM1",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Record",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  \"12366\",\n  \"326743\",\n  \"376\"\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/external/contacts/v1/CRM1/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"external",
+								"contacts",
+								"v1",
+								"CRM1",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
