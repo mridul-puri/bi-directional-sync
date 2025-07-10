@@ -2,8 +2,8 @@ Bi-Directional Record Synchronization Application
 -------------------------------------------------
 
 PROBLEM STATEMENT : 
-Bi-directional Record Synchronization Service that where 2 Systems (getting data from multiple sources) can keep their records in sync in real time.
-One of the systems is a black box (mimicking an external system) only accessible via exposed CRUD APIs, also governed by rate limits.
+- Bi-directional Record Synchronization Service that where 2 Systems (getting data from multiple sources) can keep their records in sync in real time.
+- One of the systems is a black box (mimicking an external system) only accessible via exposed CRUD APIs, also governed by rate limits.
 
 FUNCTIONAL REQUIREMENTS :
 
