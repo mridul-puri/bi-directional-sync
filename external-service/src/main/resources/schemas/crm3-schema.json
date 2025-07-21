@@ -13,7 +13,8 @@
     "Mailing_City": { "type": "string" },
     "Mailing_State": { "type": "string" },
     "Mailing_Zip": { "type": "string" },
-    "Mailing_Country": { "type": "string" }
+    "Mailing_Country": { "type": "string" },
+    "MeetingDate": { "type": "string" }
   },
   "additionalProperties": false
 }

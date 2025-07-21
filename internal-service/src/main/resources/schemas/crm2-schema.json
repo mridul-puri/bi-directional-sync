@@ -7,7 +7,7 @@
     "vid": { "type": "integer" },
     "properties": {
       "type": "object",
-      "required": ["firstname", "lastname", "email", "address_street", "address_city", "address_state", "address_postalcode", "address_country"],
+      "required": ["firstname", "lastname", "email", "address_street", "address_city", "address_state", "address_postalcode", "address_country", "MeetingDate"],
       "properties": {
         "firstname": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
         "lastname": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
@@ -17,7 +17,8 @@
         "address_city": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
         "address_state": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
         "address_postalcode": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
-        "address_country": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } }
+        "address_country": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
+        "MeetingDate": { "type": "object", "required": ["value"], "properties": { "value": { "type": "integer" } } }
       }
     }
   },

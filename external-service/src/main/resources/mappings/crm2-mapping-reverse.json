@@ -8,5 +8,6 @@
   "$.city": "/properties/address_city/value",
   "$.state": "/properties/address_state/value",
   "$.postalCode": "/properties/address_postalcode/value",
-  "$.country": "/properties/address_country/value"
+  "$.country": "/properties/address_country/value",
+  "$.lastMeetingDate": "/properties/MeetingDate/value"
 }

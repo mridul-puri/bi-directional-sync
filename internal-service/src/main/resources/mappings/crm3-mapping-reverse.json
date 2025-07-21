@@ -8,5 +8,6 @@
   "$.cityName": "/Mailing_City",
   "$.stateName": "/Mailing_State",
   "$.zipCode": "/Mailing_Zip",
-  "$.countryName": "/Mailing_Country"
+  "$.countryName": "/Mailing_Country",
+  "$.lastMeetingDate": "/MeetingDate"
 }

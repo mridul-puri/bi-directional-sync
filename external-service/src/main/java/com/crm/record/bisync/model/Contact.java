@@ -21,6 +21,7 @@ public class Contact {
     private String postalCode;
     private String country;
     private String lastUpdated;
+    private String lastMeetingDate;
 
     public String getId() {
         return id;
@@ -110,4 +111,11 @@ public class Contact {
         this.lastUpdated = lastUpdated;
     }
 
+    public String getLastMeetingDate() {
+        return lastMeetingDate;
+    }
+
+    public void setLastMeetingDate(String lastMeetingDate) {
+        this.lastMeetingDate = lastMeetingDate;
+    }
 }

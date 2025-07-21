@@ -19,7 +19,8 @@
         "PostalCode": { "type": "string" },
         "Country": { "type": "string" }
       }
-    }
+    },
+    "MeetingDate": { "type": "string" }
   },
   "additionalProperties": false
 }

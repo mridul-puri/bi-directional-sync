@@ -17,7 +17,8 @@
         "address_city": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
         "address_state": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
         "address_postalcode": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
-        "address_country": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } }
+        "address_country": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } },
+        "MeetingDate": { "type": "object", "required": ["value"], "properties": { "value": { "type": "string" } } }
       }
     }
   },

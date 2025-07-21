@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "CRM 1 Schema",
   "type": "object",
-  "required": ["AccountId", "FirstName", "LastName", "Email", "MailingAddress"],
+  "required": ["AccountId", "FirstName", "LastName", "Email", "MailingAddress", "MeetingDate"],
   "properties": {
     "AccountId": { "type": "string" },
     "FirstName": { "type": "string" },
@@ -19,7 +19,8 @@
         "PostalCode": { "type": "string" },
         "Country": { "type": "string" }
       }
-    }
+    },
+    "MeetingDate": { "type": "integer" }
   },
   "additionalProperties": false
 }

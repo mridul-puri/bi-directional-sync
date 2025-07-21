@@ -21,6 +21,7 @@ public class Contact {
     private String zipCode;
     private String countryName;
     private String lastUpdated;
+    private Integer lastMeetingDate;
 
     public String getContactId() {
         return contactId;
@@ -108,5 +109,13 @@ public class Contact {
 
     public void setLastUpdated(String lastUpdated) {
         this.lastUpdated = lastUpdated;
+    }
+
+    public Integer getLastMeetingDate() {
+        return lastMeetingDate;
+    }
+
+    public void setLastMeetingDate(Integer lastMeetingDate) {
+        this.lastMeetingDate = lastMeetingDate;
     }
 }

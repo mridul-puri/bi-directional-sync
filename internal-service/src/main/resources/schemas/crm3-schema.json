@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "CRM 3 Schema",
   "type": "object",
-  "required": ["id", "First_Name", "Last_Name", "Email", "Mailing_Street", "Mailing_City", "Mailing_State", "Mailing_Zip", "Mailing_Country"],
+  "required": ["id", "First_Name", "Last_Name", "Email", "Mailing_Street", "Mailing_City", "Mailing_State", "Mailing_Zip", "Mailing_Country", "MeetingDate"],
   "properties": {
     "id": { "type": "string" },
     "First_Name": { "type": "string" },
@@ -13,7 +13,8 @@
     "Mailing_City": { "type": "string" },
     "Mailing_State": { "type": "string" },
     "Mailing_Zip": { "type": "string" },
-    "Mailing_Country": { "type": "string" }
+    "Mailing_Country": { "type": "string" },
+    "MeetingDate": { "type": "integer" }
   },
   "additionalProperties": false
 }
